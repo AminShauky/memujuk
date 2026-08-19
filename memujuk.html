@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ssshhh... 🐱💤</title>
+    
+    <!-- Import Google Fonts (Comel & Bulat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Sniglet&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Tema Warna Gebu & Comel */
+        :root {
+            --bg-color: #FFF6E9; /* Krim Lembut */
+            --card-bg: #FFFFFF;
+            --text-main: #5C4B51; /* Coklat Kehitaman */
+            --accent: #FFA69E; /* Pink Oren Pastel */
+            --accent-hover: #FF8A80;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            
+            /* Corak titik-titik (Polka dots) yang sangat pudar kat background */
+            background-image: radial-gradient(var(--accent) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0;
+        }
+
+        .cute-container {
+            width: 90%;
+            max-width: 450px;
+            background: var(--card-bg);
+            border-radius: 40px; /* Bucu sangat bulat */
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(255, 166, 158, 0.2);
+            position: relative;
+            
+            opacity: 0;
+            transform: scale(0.9);
+            animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* --- Animasi Kucing Tidur --- */
+        .cat-sleeping {
+            font-size: 5em;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .zzz {
+            position: absolute;
+            font-family: 'Sniglet', cursive;
+            color: var(--accent);
+            font-size: 1.5em;
+            top: 20px;
+            right: 35%;
+            animation: snooze 2.5s infinite linear;
+        }
+
+        /* --- Teks Comel --- */
+        h1 {
+            font-family: 'Sniglet', cursive;
+            color: var(--accent);
+            font-size: 2em;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #7A696E;
+        }
+
+        /* Highlight untuk penegasan tapi lembut */
+        .highlight {
+            background-color: #FFF0F0;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: var(--accent-hover);
+        }
+
+        /* --- Butang Gebu --- */
+        .btn-cute {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            border-radius: 30px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.1em;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(255, 166, 158, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cute:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 166, 158, 0.6);
+        }
+
+        .btn-cute:active {
+            transform: scale(0.95);
+        }
+
+        /* Keyframes */
+        @keyframes popIn {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes snooze {
+            0% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translate(20px, -30px) scale(1.5); }
+        }
+
+        /* Hati terbang masa klik butang */
+        .flying-heart {
+            position: absolute;
+            font-size: 25px;
+            pointer-events: none;
+            animation: flyUp 1s ease-out forwards;
+            z-index: 100;
+        }
+
+        @keyframes flyUp {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cute-container">
+        
+        <!-- Animasi Kucing -->
+        <div style="position: relative;">
+            <div class="zzz">Zzz...</div>
+            <div class="cat-sleeping">🐱💤</div>
+        </div>
+
+        <h1>Ssshhh...</h1>
+
+        <p>Saya letak kucing ni kat sini untuk jaga ketenangan awak.</p>
+
+        <p>Saya janji takkan tanya banyak soalan lagi harini. Saya takkan <i>overthink</i>, dan saya <span class="highlight">takkan ulang cakap maaf</span> banyak-banyak kali sampai buat awak rimas.</p>
+
+        <p>Awak rehatlah. Jangan balas apa-apa, jangan fikir pasal saya dulu. Ambil masa awak untuk tenangkan diri, <i>okay</i>? Saya sayang awak.</p>
+
+        <button class="btn-cute" onclick="sendLove(event)">Okay, saya nak rehat ☁️</button>
+
+    </div>
+
+    <!-- JavaScript untuk efek butang (Hati terbang) -->
+    <script>
+        function sendLove(e) {
+            // Tukar teks butang
+            const btn = e.target;
+            btn.innerText = "Rehat elok-elok... 💖";
+            btn.style.backgroundColor = "#FF8A80";
+
+            // Buat efek hati terbang
+            for(let i=0; i<5; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.className = 'flying-heart';
+                    
+                    // Kedudukan random sikit kat area butang
+                    const rect = btn.getBoundingClientRect();
+                    const randomX = rect.left + (Math.random() * rect.width);
+                    const randomY = rect.top + (Math.random() * 20);
+                    
+                    heart.style.left = randomX + 'px';
+                    
+                    // Kalau kat phone, position kena main dengan window scroll
+                    heart.style.top = (randomY + window.scrollY - 30) + 'px';
+                    
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => { heart.remove(); }, 1000);
+                }, i * 150); // Delay sikit antara setiap hati
+            }
+        }
+    </script>
+
+</body>
+</html>
